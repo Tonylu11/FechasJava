@@ -78,8 +78,7 @@ public class Fecha {
 		if (esFuturo())
 			throw new FechaFuturaException("La fecha es futura.");
 		long fechaMilis = calendar.getTimeInMillis();
-		long fechaActualMilis = GregorianCalendar.getInstance()
-				.getTimeInMillis();
+		long fechaActualMilis = GregorianCalendar.getInstance().getTimeInMillis();
 		long diasTranscurridos = fechaActualMilis - fechaMilis;
 		return diasTranscurridos = ((((diasTranscurridos / 1000) / 60) / 60) / 24);
 
@@ -92,11 +91,9 @@ public class Fecha {
 	 * @throws FormatoNoValidoException
 	 *             si el formato no es valido.
 	 */
-	private boolean esValidoFormato(String fecha)
-			throws FormatoNoValidoException {
+	private boolean esValidoFormato(String fecha) throws FormatoNoValidoException {
 		if (!Pattern.matches(COMPROBAR_FECHA, fecha))
-			throw new FormatoNoValidoException(
-					"El formato de la fecha no es valido.");
+			throw new FormatoNoValidoException("El formato de la fecha no es valido.");
 		return true;
 	}
 
@@ -113,8 +110,7 @@ public class Fecha {
 	 * @throws FechaNoValidaException
 	 *             si la fecha no es valida.
 	 */
-	private boolean esValidaFecha(String dia, String mes, String anio)
-			throws FechaNoValidaException {
+	private boolean esValidaFecha(String dia, String mes, String anio) throws FechaNoValidaException {
 		setCalendar(dia, mes, anio);
 		try {
 			calendar.get(Calendar.DAY_OF_WEEK);
@@ -135,7 +131,7 @@ public class Fecha {
 	 *            Anio de la fecha.
 	 */
 	private void setCalendar(String dia, String mes, String anio) {
-		calendar.setLenient(true);
+		calendar.setLenient(false);
 		int date = Integer.parseInt(dia);
 		int month = Integer.parseInt(mes) - 1;
 		int year = Integer.parseInt(anio);
@@ -186,8 +182,7 @@ public class Fecha {
 		if (esFuturo())
 			throw new FechaFuturaException("La fecha es futura.");
 		long edadMilis = calendar.getTimeInMillis();
-		long fechaActualMilis = GregorianCalendar.getInstance()
-				.getTimeInMillis();
+		long fechaActualMilis = GregorianCalendar.getInstance().getTimeInMillis();
 		long aniosTranscurridos = fechaActualMilis - edadMilis;
 		return (((((aniosTranscurridos / 1000) / 60) / 60) / 24) / 365) >= 18;
 
@@ -202,8 +197,7 @@ public class Fecha {
 	 */
 	GregorianCalendar sumarFechas(Fecha fecha) {
 		GregorianCalendar fechaSuma = new GregorianCalendar();
-		fechaSuma.setTimeInMillis(fecha.calendar.getTimeInMillis()
-				+ calendar.getTimeInMillis());
+		fechaSuma.setTimeInMillis(fecha.calendar.getTimeInMillis() + calendar.getTimeInMillis());
 		return fechaSuma;
 
 	}

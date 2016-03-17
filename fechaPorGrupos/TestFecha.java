@@ -20,7 +20,7 @@ public class TestFecha {
 	public static void main(String[] args) {
 		try {
 			Fecha fecha = new Fecha("31/01/1995");
-			Fecha fecha2 = new Fecha("29", "02", "1999");
+			Fecha fecha2 = new Fecha("29", "02", "2000");
 			Fecha fechaFutura = new Fecha("29/02/2020");
 			System.out.println("Dias transcurridos: "
 					+ fecha.calcularDiasTranscurridos());
